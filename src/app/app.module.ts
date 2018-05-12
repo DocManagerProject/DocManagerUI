@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {Navbar} from "./navbar/navbar";
-import {Page} from "./page/page";
-import {Category} from "./category/category";
+import {Page} from "./content/page/page";
+import {Category} from "./content/category/category";
 
 @NgModule({
   declarations: [
