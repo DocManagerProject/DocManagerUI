@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <h1>{{ title }}</h1>
+    <div *ngFor="let paragraph of paragraphs" class="paragraph">
+      <p [innerHtml]="paragraph"> </p>
+    </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
