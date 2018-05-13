@@ -6,6 +6,7 @@ import {Component} from "@angular/core";
   styleUrls: ['./category.css']
 })
 export class Category {
+  id: number;
   title: string = "Category title";
   pages: string[] = [
     'page1',

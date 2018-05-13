@@ -1,12 +1,29 @@
 import {Component} from "@angular/core";
+import {Category} from "../category/category";
 
 @Component({
   selector: 'page',
   templateUrl: './page.html',
   styleUrls: ['./page.css']
 })
-  export class Page {
+export class Page {
+  id: number;
   title: string = 'Test title';
+  category: Category = {
+    id: 1,
+    title: "Category title",
+    pages:  [
+      'page1',
+      'page2',
+      'page3',
+      'page4',
+      'page5',
+      'page6',
+      'page7',
+      'page8',
+      'page9'
+    ]
+  };
   paragraphs: string[] = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper enim vitae nulla volutpat, posuere tincidunt metus sagittis. Curabitur imperdiet, lorem in sollicitudin euismod, libero purus efficitur odio, a tincidunt dolor turpis eget leo. Vivamus varius risus ac velit sagittis, in condimentum metus sagittis. <a href="#">Aliquam</a> condimentum suscipit congue. Donec leo lorem, molestie dapibus magna feugiat, pulvinar condimentum quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla feugiat in nisi non pellentesque. Pellentesque magna nulla, efficitur in pellentesque sit amet, mattis nec purus. In hac habitasse platea dictumst. Phasellus tempor diam eleifend auctor hendrerit. Integer ut ligula sit amet tellus laoreet dictum. In a ultrices mauris. Aliquam tincidunt leo in magna egestas, vel ultricies neque condimentum. Nulla risus tellus, cursus id pretium quis, ultrices suscipit libero. Cras varius sem eu nibh congue, sit amet vehicula augue aliquam.\n' +
     '\n',
     'Integer feugiat consequat dolor. <a href="#">Fusce ac orci</a> et orci vulputate rutrum vel in tortor. Praesent laoreet eget tellus ac porttitor. In massa tortor, facilisis congue erat vel, dapibus gravida lacus. Aenean eleifend urna sed eleifend placerat. Suspendisse semper, nulla in convallis fringilla, diam ante faucibus nisl, et egestas leo lacus aliquam tortor. Vestibulum sagittis eget mi in euismod. Ut pharetra diam quis magna fermentum, nec fermentum ante suscipit.\n' +
