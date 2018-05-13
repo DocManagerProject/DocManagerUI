@@ -1,0 +1,13 @@
+.dashboardItem {
+  display: inline-block;
+}
+
+.dashboardItemIcon {
+  width: 128px;
+  height: 128px;
+  overflow: hidden;
+}
+
+.dashboardItemHeader {
+  text-align: center;
+}
