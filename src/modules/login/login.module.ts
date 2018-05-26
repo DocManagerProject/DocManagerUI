@@ -7,7 +7,7 @@ import {LoginBox} from "./content/loginbox/loginBox";
 
 
 const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginPage },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 

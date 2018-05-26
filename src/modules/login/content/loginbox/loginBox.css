@@ -1,0 +1,13 @@
+.login-box {
+  width: 320px;
+  display: inline-block;
+}
+
+.remember-me-checkbox {
+  float: left;
+}
+
+.forgotten-password-link {
+  font-size: 12px;
+  float: right;
+}
