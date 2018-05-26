@@ -2,6 +2,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {LoginComponent} from "./login.component";
+import {LoginPage} from "./content/loginpage/loginPage";
+import {LoginBox} from "./content/loginbox/loginBox";
 
 
 const appRoutes: Routes = [
@@ -11,7 +13,9 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    LoginPage,
+    LoginBox
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
