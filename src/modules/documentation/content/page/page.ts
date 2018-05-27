@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Category} from "../category/category";
+import {Category} from "../../../documentation/content/category/category";
 
 @Component({
   selector: 'page',

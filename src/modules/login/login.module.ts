@@ -10,8 +10,7 @@ import {HttpClientModule} from "@angular/common/http";
 
 
 const appRoutes: Routes = [
-  { path: 'login', component: LoginPage },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'login', component: LoginPage }
 ];
 
 @NgModule({
@@ -21,7 +20,7 @@ const appRoutes: Routes = [
     LoginBox
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forChild(appRoutes),
     BrowserModule,
     FormsModule,
     HttpClientModule
