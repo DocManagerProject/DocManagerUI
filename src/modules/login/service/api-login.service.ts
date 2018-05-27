@@ -25,11 +25,10 @@ export class ApiLoginService {
 
   onSuccess(response: HttpResponseBase): void {
     this.loggedIn = true;
+    localStorage.setItem("apiToken", response.headers.get("apiToken"));
     alert(response.headers.get("apiToken"));
   }
 
   onError(error: HttpErrorResponse): void {
-    this.router.navigate(["login"]);
-    //alert("error: " + error.status);
   }
 }
