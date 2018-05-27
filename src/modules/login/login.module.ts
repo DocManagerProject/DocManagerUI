@@ -6,7 +6,7 @@ import {LoginPage} from "./content/loginpage/loginPage";
 import {LoginBox} from "./content/loginbox/loginBox";
 import {FormsModule} from "@angular/forms";
 import {ApiLoginService} from "./service/api-login.service";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 
 
 const appRoutes: Routes = [
