@@ -7,11 +7,12 @@ import {Page} from "./content/page/page";
 import {Category} from "./content/category/category";
 import {RouterModule, Routes} from "@angular/router";
 import {Dashboard} from "./content/dashboard/dashboard";
+import {AuthGuard} from "../login/service/authGuard";
 
 const documentationRoutes: Routes = [
-  { path: 'page/:id', component: Page},
-  { path: 'category/:id', component: Category},
-  { path: 'dashboard/:id', component: Dashboard}
+  { path: 'page/:id', component: Page, canActivate: [AuthGuard]},
+  { path: 'category/:id', component: Category, canActivate: [AuthGuard]},
+  { path: 'dashboard/:id', component: Dashboard, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -26,8 +27,7 @@ const documentationRoutes: Routes = [
     RouterModule.forChild(documentationRoutes),
     BrowserModule
   ],
-  providers: [],
-  bootstrap: [DocumentationComponent],
-  exports: [DocumentationComponent]
+  providers: [AuthGuard],
+  bootstrap: [DocumentationComponent]
 })
 export class DocumentationModule { }

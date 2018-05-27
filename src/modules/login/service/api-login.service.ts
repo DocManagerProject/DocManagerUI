@@ -16,7 +16,9 @@ export class ApiLoginService {
     private router: Router
   ) { }
 
-  loggedIn: boolean = false;
+  public isLoggedIn(): boolean {
+    return localStorage.getItem("apiToken") != null;
+  }
 
   public login(credentials: LoginCredentials): void {
     this.http.post(API_URL + "/login", credentials, {observe: 'response'})
@@ -24,7 +26,6 @@ export class ApiLoginService {
   }
 
   onSuccess(response: HttpResponseBase): void {
-    this.loggedIn = true;
     localStorage.setItem("apiToken", response.headers.get("apiToken"));
     alert(response.headers.get("apiToken"));
   }
