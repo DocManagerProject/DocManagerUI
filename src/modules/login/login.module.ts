@@ -4,6 +4,9 @@ import {BrowserModule} from "@angular/platform-browser";
 import {LoginComponent} from "./login.component";
 import {LoginPage} from "./content/loginpage/loginPage";
 import {LoginBox} from "./content/loginbox/loginBox";
+import {FormsModule} from "@angular/forms";
+import {ApiLoginService} from "./service/api-login.service";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 const appRoutes: Routes = [
@@ -19,9 +22,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ApiLoginService
+  ],
   bootstrap: [LoginComponent]
 })
 export class LoginModule {
