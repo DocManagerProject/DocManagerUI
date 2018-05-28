@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {LoginCredentials} from "../../model/loginCredentials";
-import {ApiLoginService} from "../../service/api-login.service";
+import {ApiLoginService} from "../../service/apiLoginService";
 
 @Component({
   selector: 'login-box',

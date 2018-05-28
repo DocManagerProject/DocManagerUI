@@ -1,5 +1,5 @@
 import {CanActivate, Router} from "@angular/router";
-import {ApiLoginService} from "./api-login.service";
+import {ApiLoginService} from "./apiLoginService";
 import {Injectable} from "@angular/core";
 
 @Injectable()
