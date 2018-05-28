@@ -7,10 +7,11 @@ import {LoginBox} from "./content/loginbox/loginBox";
 import {FormsModule} from "@angular/forms";
 import {ApiLoginService} from "./service/api-login.service";
 import {HttpClientModule} from "@angular/common/http";
+import {LoggedInGuard} from "./service/loggedInGuard";
 
 
 const appRoutes: Routes = [
-  { path: 'login', component: LoginPage }
+  { path: 'login', component: LoginPage, canActivate: [LoggedInGuard]}
 ];
 
 @NgModule({
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
-    ApiLoginService
+    ApiLoginService,
+    LoggedInGuard
   ],
   bootstrap: [LoginComponent]
 })
