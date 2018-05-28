@@ -14,7 +14,8 @@
           <div class="col">
             <div class="form-check">
               <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="" id="remember">Remember me
+                <input type="checkbox" class="form-check-input" value="" id="remember" [checked]="remember"
+                       (change)="remember = !remember">Remember me
               </label>
             </div>
           </div>

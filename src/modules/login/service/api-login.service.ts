@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpResponseBase} from "@angular/common/http";
 import {LoginCredentials} from "../model/loginCredentials";
-import {Router} from "@angular/router";
 
 const API_URL: string = environment.apiUrl;
 
@@ -12,24 +11,27 @@ const API_URL: string = environment.apiUrl;
 export class ApiLoginService {
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private http: HttpClient
   ) { }
 
   public isLoggedIn(): boolean {
-    return localStorage.getItem("apiToken") != null;
+    return localStorage.getItem("apiToken") != null || sessionStorage.getItem("apiToken") != null;
   }
 
-  public login(credentials: LoginCredentials): void {
+  public login(credentials: LoginCredentials, remember: boolean): void {
     this.http.post(API_URL + "/login", credentials, {observe: 'response'})
-      .subscribe(this.onSuccess, this.onError);
+      .subscribe(response => this.onSuccess(response, remember), this.onError);
   }
 
-  onSuccess(response: HttpResponseBase): void {
-    localStorage.setItem("apiToken", response.headers.get("apiToken"));
-    alert(response.headers.get("apiToken"));
+  private onSuccess(response: HttpResponseBase, remember: boolean): void {
+    if (remember) {
+      localStorage.setItem("apiToken", response.headers.get("apiToken"));
+      return;
+    }
+    localStorage.removeItem("apiToken");
+    sessionStorage.setItem("apiToken", response.headers.get("apiToken"));
   }
 
-  onError(error: HttpErrorResponse): void {
+  private onError(error: HttpErrorResponse): void {
   }
 }

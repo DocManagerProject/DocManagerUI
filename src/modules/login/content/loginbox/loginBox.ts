@@ -11,6 +11,7 @@ export class LoginBox {
   loginCredentials: LoginCredentials = new LoginCredentials("", "");
 
   isValid: boolean = true;
+  remember: boolean = localStorage.getItem("apiToken") != null;
   errorMessage: string = "";
 
   constructor(private loginService: ApiLoginService) { }
@@ -39,7 +40,7 @@ export class LoginBox {
     this.validateCredentials();
 
     if (this.isValid) {
-      this.loginService.login(this.loginCredentials);
+      this.loginService.login(this.loginCredentials, this.remember);
     }
   }
 }
