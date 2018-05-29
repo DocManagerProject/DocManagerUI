@@ -3,6 +3,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpResponseBase} from "@angular/common/http";
 import {LoginCredentials} from "../model/loginCredentials";
 import {Router} from "@angular/router";
+import {ApiTokenManager} from "../../app/service/apiTokenManager";
 
 const API_URL: string = environment.apiUrl;
 
@@ -13,11 +14,12 @@ export class ApiLoginService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private tokenManager: ApiTokenManager
   ) { }
 
   public isLoggedIn(): boolean {
-    return localStorage.getItem("apiToken") != null || sessionStorage.getItem("apiToken") != null;
+    return this.tokenManager.getToken() !== null;
   }
 
   public login(credentials: LoginCredentials, remember: boolean): void {
@@ -29,12 +31,7 @@ export class ApiLoginService {
   }
 
   private onSuccess(response: HttpResponseBase, remember: boolean): void {
-    if (remember) {
-      localStorage.setItem("apiToken", response.headers.get("apiToken"));
-    } else {
-      localStorage.removeItem("apiToken");
-      sessionStorage.setItem("apiToken", response.headers.get("apiToken"));
-    }
+    this.tokenManager.saveToken(response.headers.get("apiToken"), remember);
     this.router.navigate(["dashboard/1"]);
   }
 
