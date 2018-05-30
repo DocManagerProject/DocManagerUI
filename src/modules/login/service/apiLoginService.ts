@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse, HttpResponseBase} from "@angular/common/h
 import {LoginCredentials} from "../model/loginCredentials";
 import {Router} from "@angular/router";
 import {StorageManager} from "../../app/service/storageManager.service";
+import {SettingsService} from "../../documentation/settingsService";
 
 const API_URL: string = environment.apiUrl;
 
@@ -15,7 +16,8 @@ export class ApiLoginService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private storageManager: StorageManager
+    private storageManager: StorageManager,
+    private settingsService: SettingsService
   ) { }
 
   public isLoggedIn(): boolean {
@@ -33,7 +35,10 @@ export class ApiLoginService {
   private onSuccess(response: HttpResponseBase, remember: boolean): void {
     this.storageManager.saveApiToken(response.headers.get("apiToken"), remember);
     this.storageManager.saveSolutionId(+response.headers.get("solutionId"), remember);
-    this.router.navigate(["dashboard/1"]);
+    this.settingsService.getSetting("start_page").subscribe(startPageSetting => {
+      let startPageId: number = +startPageSetting.value;
+      this.router.navigate(["page/" + startPageId]);
+    });
   }
 
   private onError(error: HttpErrorResponse): void {

@@ -22,7 +22,6 @@ const appRoutes: Routes = [
     DocumentationModule
   ],
   providers: [StorageManager],
-  exports: [StorageManager],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
