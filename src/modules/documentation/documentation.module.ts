@@ -9,6 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {Dashboard} from "./content/dashboard/dashboard";
 import {AuthGuard} from "../login/service/authGuard";
 import {SettingsService} from "./service/settingsService";
+import {PageService} from "./service/pageService";
 
 const documentationRoutes: Routes = [
   { path: 'page/:id', component: PageComponent, canActivate: [AuthGuard]},
@@ -28,7 +29,11 @@ const documentationRoutes: Routes = [
     RouterModule.forChild(documentationRoutes),
     BrowserModule
   ],
-  providers: [AuthGuard, SettingsService],
+  providers: [
+    AuthGuard,
+    SettingsService,
+    PageService
+  ],
   bootstrap: [DocumentationComponent]
 })
 export class DocumentationModule { }
