@@ -15,11 +15,11 @@ export class ApiLoginService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private tokenManager: StorageManager
+    private storageManager: StorageManager
   ) { }
 
   public isLoggedIn(): boolean {
-    return this.tokenManager.getApiToken() !== null;
+    return this.storageManager.getApiToken() !== null;
   }
 
   public login(credentials: LoginCredentials, remember: boolean): void {
@@ -31,7 +31,8 @@ export class ApiLoginService {
   }
 
   private onSuccess(response: HttpResponseBase, remember: boolean): void {
-    this.tokenManager.saveApiToken(response.headers.get("apiToken"), remember);
+    this.storageManager.saveApiToken(response.headers.get("apiToken"), remember);
+    this.storageManager.saveSolutionId(+response.headers.get("solutionId"), remember);
     this.router.navigate(["dashboard/1"]);
   }
 
