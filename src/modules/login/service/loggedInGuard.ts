@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ApiLoginService} from "./apiLoginService";
 import {CanActivate, Router} from "@angular/router";
-import {SettingsService} from "../../documentation/settingsService";
+import {SettingsService} from "../../documentation/service/settingsService";
 
 @Injectable()
 export class LoggedInGuard implements CanActivate {

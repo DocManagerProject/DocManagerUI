@@ -4,7 +4,7 @@ import {HttpClient, HttpErrorResponse, HttpResponseBase} from "@angular/common/h
 import {LoginCredentials} from "../model/loginCredentials";
 import {Router} from "@angular/router";
 import {StorageManager} from "../../app/service/storageManager.service";
-import {SettingsService} from "../../documentation/settingsService";
+import {SettingsService} from "../../documentation/service/settingsService";
 
 const API_URL: string = environment.apiUrl;
 

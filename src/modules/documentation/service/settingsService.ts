@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
-import {Settings} from "./model/settings";
+import {Settings} from "../model/settings";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs/internal/Observable";
-import {StorageManager} from "../app/service/storageManager.service";
+import {StorageManager} from "../../app/service/storageManager.service";
 
 const API_URL: string = environment.apiUrl;
 

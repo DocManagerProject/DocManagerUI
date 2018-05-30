@@ -8,7 +8,7 @@ import {Category} from "./content/category/category";
 import {RouterModule, Routes} from "@angular/router";
 import {Dashboard} from "./content/dashboard/dashboard";
 import {AuthGuard} from "../login/service/authGuard";
-import {SettingsService} from "./settingsService";
+import {SettingsService} from "./service/settingsService";
 
 const documentationRoutes: Routes = [
   { path: 'page/:id', component: Page, canActivate: [AuthGuard]},
