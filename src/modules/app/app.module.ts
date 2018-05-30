@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginModule} from "../login/login.module";
 import {DocumentationModule} from "../documentation/documentation.module";
-import {ApiTokenManager} from "./service/apiTokenManager";
+import {StorageManager} from "./service/storageManager.service";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'}
@@ -21,8 +21,8 @@ const appRoutes: Routes = [
     LoginModule,
     DocumentationModule
   ],
-  providers: [ApiTokenManager],
-  exports: [ApiTokenManager],
+  providers: [StorageManager],
+  exports: [StorageManager],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

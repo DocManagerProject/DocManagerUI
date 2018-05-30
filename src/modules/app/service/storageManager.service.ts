@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 
 @Injectable()
-export class ApiTokenManager {
+export class StorageManager {
 
-  getToken(): string {
+  getApiToken(): string {
     let sessionStorageItem = sessionStorage.getItem("apiToken");
 
     if (sessionStorageItem === null) {
@@ -12,7 +12,7 @@ export class ApiTokenManager {
     return sessionStorageItem;
   }
 
-  saveToken(apiToken: string, localOrSession: boolean) : void {
+  saveApiToken(apiToken: string, localOrSession: boolean) : void {
     if (localOrSession) {
       sessionStorage.removeItem("apiToken");
       localStorage.setItem("apiToken", apiToken);
