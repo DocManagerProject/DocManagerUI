@@ -1,4 +1,5 @@
 import {Solution} from "./solution";
+import {PageSection} from "./pageSection";
 
 export class Page {
   id: number;
@@ -6,4 +7,5 @@ export class Page {
   name: string;
   createDate: Date;
   url: string;
+  sections: PageSection[]
 }
