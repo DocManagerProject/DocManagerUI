@@ -32,6 +32,14 @@ export class ApiLoginService {
       .subscribe(response => this.onSuccess(response, remember), this.onError);
   }
 
+  public logout(): void {
+    if (this.isLoggedIn()) {
+      this.storageManager.clearApiToken();
+      this.storageManager.clearSolutionId();
+      this.router.navigate(["login"]);
+    }
+  }
+
   private onSuccess(response: HttpResponseBase, remember: boolean): void {
     this.storageManager.saveApiToken(response.headers.get("apiToken"), remember);
     this.storageManager.saveSolutionId(+response.headers.get("solutionId"), remember);

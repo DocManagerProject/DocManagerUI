@@ -11,12 +11,20 @@ export class StorageManager {
     this.saveStorageEntry("apiToken", apiToken, localOrSession);
   }
 
+  clearApiToken(): void {
+    this.clearStorageEntry("apiToken");
+  }
+
   getSolutionId(): number {
     return +this.getStorageEntry("solutionId");
   }
 
   saveSolutionId(solutionId: number, localOrSession: boolean): void {
     this.saveStorageEntry("solutionId", solutionId + "", localOrSession);
+  }
+
+  clearSolutionId(): void {
+    this.clearStorageEntry("solutionId");
   }
 
 
@@ -37,5 +45,19 @@ export class StorageManager {
       return localStorage.getItem(key);
     }
     return sessionStorageItem;
+  }
+
+  private clearStorageEntry(key: string): void {
+    let sessionStorageItem = sessionStorage.getItem(key);
+
+    if (sessionStorageItem !== null) {
+      sessionStorage.removeItem(key);
+    }
+
+    let localStorageItem = localStorage.getItem(key);
+
+    if (localStorageItem !== null) {
+      localStorage.removeItem(key);
+    }
   }
 }

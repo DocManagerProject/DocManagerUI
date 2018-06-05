@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {ApiLoginService} from "../../login/service/apiLoginService";
 
 @Component({
   selector: 'navbar',
@@ -8,4 +9,11 @@ import {Component} from "@angular/core";
 
 export class Navbar {
 
+  constructor(
+    private apiLoginService: ApiLoginService
+  ) { }
+
+  logout(): void {
+    this.apiLoginService.logout();
+  }
 }
