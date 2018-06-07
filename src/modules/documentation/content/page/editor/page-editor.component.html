@@ -1,0 +1,21 @@
+<navbar></navbar>
+<form>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <enhanced-text #pageTitle [text]="title"> </enhanced-text>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <div class="form-group">
+      <textarea class="form-control" rows="12" id="pageContent" name="content" [(ngModel)]="content">
+      </textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Dodaj stronę</button>
+    </div>
+    <div class="col"></div>
+  </div>
+</form>

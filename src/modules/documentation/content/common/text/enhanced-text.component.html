@@ -1,0 +1,9 @@
+<span
+  [hidden] = "inputEnabled"
+  (click) = "enableInput()"> {{ text }}</span>
+<input
+  type="text"
+  [hidden] = "!inputEnabled"
+  [value]="text"
+  (change)="writeValue($event.target.value)"
+  (blur)="disableInput()">
