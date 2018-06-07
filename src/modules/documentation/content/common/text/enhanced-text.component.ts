@@ -8,6 +8,7 @@ import {ControlValueAccessor} from "@angular/forms";
 })
 export class EnhancedTextComponent implements ControlValueAccessor {
   @Input() text: string;
+  @Input() autoHideInput: boolean = true;
 
   inputEnabled: boolean;
 
@@ -22,7 +23,7 @@ export class EnhancedTextComponent implements ControlValueAccessor {
       this.text = obj;
     }
 
-    this.inputEnabled = this.text.length === 0;
+    this.inputEnabled = !this.autoHideInput || this.text.length === 0;
     this.onChange(this.text);
   }
 
@@ -34,7 +35,7 @@ export class EnhancedTextComponent implements ControlValueAccessor {
   }
 
   disableInput(): void {
-    this.inputEnabled = false;
+    this.inputEnabled = !this.autoHideInput;
   }
 
   registerOnChange(fn: any): void {
