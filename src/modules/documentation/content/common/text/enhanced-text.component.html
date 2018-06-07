@@ -1,9 +1,11 @@
 <span
-  [hidden] = "inputEnabled"
+  *ngIf = "!inputEnabled"
   (click) = "enableInput()"> {{ text }}</span>
 <input
+  id="enhancedTextInput"
+  #enhancedTextInput
   type="text"
-  [hidden] = "!inputEnabled"
+  *ngIf = "inputEnabled"
   [value]="text"
   (change)="writeValue($event.target.value)"
   (blur)="disableInput()">

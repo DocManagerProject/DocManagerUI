@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, Renderer2} from "@angular/core";
 import {ControlValueAccessor} from "@angular/forms";
 
 @Component({
@@ -7,10 +7,15 @@ import {ControlValueAccessor} from "@angular/forms";
   styleUrls: ['./enhanced-text.component.css']
 })
 export class EnhancedTextComponent implements ControlValueAccessor {
-  @Input()
-  text: string;
+  @Input() text: string;
+
   inputEnabled: boolean;
+
   onChange = (text: string) => {};
+
+  constructor(
+    private renderer: Renderer2
+  ) { }
 
   writeValue(obj: any): void {
     if (obj !== undefined) {
@@ -23,6 +28,9 @@ export class EnhancedTextComponent implements ControlValueAccessor {
 
   enableInput(): void {
     this.inputEnabled = true;
+    setTimeout(() => {
+      this.renderer.selectRootElement('#enhancedTextInput').focus();
+    }, 10);
   }
 
   disableInput(): void {
