@@ -1,13 +1,21 @@
-import {Component, Input, Renderer2} from "@angular/core";
-import {ControlValueAccessor} from "@angular/forms";
+import {Component, forwardRef, Input, Renderer2} from "@angular/core";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
   selector: 'enhanced-text',
   templateUrl: './enhanced-text.component.html',
-  styleUrls: ['./enhanced-text.component.css']
+  styleUrls: ['./enhanced-text.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => EnhancedTextComponent),
+    }
+  ]
 })
 export class EnhancedTextComponent implements ControlValueAccessor {
   @Input() text: string;
+  @Input() name: string;
   @Input() autoHideInput: boolean = true;
 
   inputEnabled: boolean;
@@ -19,11 +27,11 @@ export class EnhancedTextComponent implements ControlValueAccessor {
   ) { }
 
   writeValue(obj: any): void {
-    if (obj !== undefined) {
+    if (obj !== null && obj !== undefined) {
       this.text = obj;
+      this.inputEnabled = !this.autoHideInput || this.text.length === 0;
     }
 
-    this.inputEnabled = !this.autoHideInput || this.text.length === 0;
     this.onChange(this.text);
   }
 

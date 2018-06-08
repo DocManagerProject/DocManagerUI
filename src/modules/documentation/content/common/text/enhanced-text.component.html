@@ -4,6 +4,7 @@
 <input
   id="enhancedTextInput"
   #enhancedTextInput
+  name="{{ name }}"
   type="text"
   *ngIf = "!autoHideInput || inputEnabled"
   [value]="text"
