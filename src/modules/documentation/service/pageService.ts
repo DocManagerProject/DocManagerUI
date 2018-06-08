@@ -21,4 +21,12 @@ export class PageService {
       })
     });
   }
+
+  addPage(page: Page): void {
+    this.http.post<Page>(API_URL + "/pages", page, {
+      headers:  new HttpHeaders({
+        "apiToken": this.storageManager.getApiToken()
+      })
+    });
+  }
 }
