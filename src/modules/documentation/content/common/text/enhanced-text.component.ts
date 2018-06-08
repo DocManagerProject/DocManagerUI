@@ -30,6 +30,8 @@ export class EnhancedTextComponent implements ControlValueAccessor {
     if (obj !== null && obj !== undefined) {
       this.text = obj;
       this.inputEnabled = !this.autoHideInput || this.text.length === 0;
+    } else {
+      this.inputEnabled = true;
     }
 
     this.onChange(this.text);
