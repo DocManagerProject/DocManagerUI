@@ -5,11 +5,11 @@ import {Page} from "../../../model/page";
 import {StorageManager} from "../../../../app/service/storageManager.service";
 
 @Component({
-  selector: 'page-editor',
-  templateUrl: './page-editor.component.html',
-  styleUrls: ['./page-editor.component.css']
+  selector: 'create-page',
+  templateUrl: './create-page.component.html',
+  styleUrls: ['./create-page.component.css']
 })
-export class PageEditorComponent implements OnInit {
+export class CreatePageComponent implements OnInit {
 
   page: Page;
   mergedContent: string;
@@ -37,27 +37,18 @@ export class PageEditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      if (params['url']) {
-        this.pageService.getPage(params['url']).subscribe(page => {
-          this.page = page;
-          this.mergedContent = page.sections.map(section => section.content).reduce((a,b) => a + b);
-        });
-      } else {
-        this.page = {
-          id: 0,
-          solution: {
-            id: this.storageManager.getSolutionId(),
-            name: "",
-            createDate: null,
-            state: null
-          },
-          name: "",
-          createDate: null,
-          url: "",
-          sections: []
-        }
-      }
-    });
+    this.page = {
+      id: 0,
+      solution: {
+        id: this.storageManager.getSolutionId(),
+        name: "",
+        createDate: null,
+        state: null
+      },
+      name: "",
+      createDate: null,
+      url: "",
+      sections: []
+    }
   }
 }

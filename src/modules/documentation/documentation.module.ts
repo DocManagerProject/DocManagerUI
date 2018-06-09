@@ -10,16 +10,17 @@ import {Dashboard} from "./content/dashboard/dashboard";
 import {AuthGuard} from "../login/service/authGuard";
 import {SettingsService} from "./service/settingsService";
 import {PageService} from "./service/pageService";
-import {PageEditorComponent} from "./content/page/editor/page-editor.component";
+import {EditPageComponent} from "./content/page/edit/edit-page.component";
 import {FormsModule} from "@angular/forms";
 import {EnhancedTextComponent} from "./content/common/text/enhanced-text.component";
+import {CreatePageComponent} from "./content/page/create/create-page.component";
 
 const documentationRoutes: Routes = [
   { path: 'page/:url', component: PageComponent, canActivate: [AuthGuard]},
   { path: 'category/:id', component: Category, canActivate: [AuthGuard]},
   { path: 'dashboard/:id', component: Dashboard, canActivate: [AuthGuard]},
-  { path: 'create-page', component: PageEditorComponent, canActivate: [AuthGuard]},
-  { path: 'edit-page/:url', component: PageEditorComponent, canActivate: [AuthGuard]}
+  { path: 'create-page', component: CreatePageComponent, canActivate: [AuthGuard]},
+  { path: 'edit-page/:url', component: EditPageComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -27,7 +28,8 @@ const documentationRoutes: Routes = [
     DocumentationComponent,
     Navbar,
     PageComponent,
-    PageEditorComponent,
+    CreatePageComponent,
+    EditPageComponent,
     Category,
     Dashboard,
     EnhancedTextComponent
