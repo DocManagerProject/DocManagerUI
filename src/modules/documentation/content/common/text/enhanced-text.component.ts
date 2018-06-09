@@ -45,7 +45,7 @@ export class EnhancedTextComponent implements ControlValueAccessor {
   }
 
   disableInput(): void {
-    this.inputEnabled = !this.autoHideInput;
+    this.inputEnabled = !this.autoHideInput || this.text.length === 0;
   }
 
   registerOnChange(fn: any): void {
