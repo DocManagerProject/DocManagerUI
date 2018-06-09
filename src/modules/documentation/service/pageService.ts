@@ -14,8 +14,9 @@ export class PageService {
     private storageManager: StorageManager
   ) { }
 
-  getPage(id: number): Observable<Page> {
-    return this.http.get<Page>(API_URL + "/pages/" + id, {
+  getPage(url: string): Observable<Page> {
+    return this.http.get<Page>(
+      API_URL + "/pages/solution/" + this.storageManager.getSolutionId() + "/url/" + url, {
       headers: new HttpHeaders({
         "apiToken": this.storageManager.getApiToken()
       })
@@ -27,6 +28,6 @@ export class PageService {
       headers:  new HttpHeaders({
         "apiToken": this.storageManager.getApiToken()
       })
-    });
+    }).subscribe();
   }
 }

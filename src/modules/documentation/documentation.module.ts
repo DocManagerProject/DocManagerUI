@@ -15,11 +15,11 @@ import {FormsModule} from "@angular/forms";
 import {EnhancedTextComponent} from "./content/common/text/enhanced-text.component";
 
 const documentationRoutes: Routes = [
-  { path: 'page/:id', component: PageComponent, canActivate: [AuthGuard]},
+  { path: 'page/:url', component: PageComponent, canActivate: [AuthGuard]},
   { path: 'category/:id', component: Category, canActivate: [AuthGuard]},
   { path: 'dashboard/:id', component: Dashboard, canActivate: [AuthGuard]},
   { path: 'create-page', component: PageEditorComponent, canActivate: [AuthGuard]},
-  { path: 'edit-page/:id', component: PageEditorComponent, canActivate: [AuthGuard]}
+  { path: 'edit-page/:url', component: PageEditorComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -19,7 +19,7 @@ export class PageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.pageService.getPage(+params['id']).subscribe(page => {
+      this.pageService.getPage(params['url']).subscribe(page => {
         this.id = page.id;
         this.name = page.name;
         this.sections = page.sections.map(section => section.content);
