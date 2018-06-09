@@ -14,13 +14,15 @@ import {EditPageComponent} from "./content/page/edit/edit-page.component";
 import {FormsModule} from "@angular/forms";
 import {EnhancedTextComponent} from "./content/common/text/enhanced-text.component";
 import {CreatePageComponent} from "./content/page/create/create-page.component";
+import {NotFoundComponent} from "../app/error/not-found.component";
 
 const documentationRoutes: Routes = [
   { path: 'page/:url', component: PageComponent, canActivate: [AuthGuard]},
   { path: 'category/:id', component: Category, canActivate: [AuthGuard]},
   { path: 'dashboard/:id', component: Dashboard, canActivate: [AuthGuard]},
   { path: 'create-page', component: CreatePageComponent, canActivate: [AuthGuard]},
-  { path: 'edit-page/:url', component: EditPageComponent, canActivate: [AuthGuard]}
+  { path: 'edit-page/:url', component: EditPageComponent, canActivate: [AuthGuard]},
+  { path: '**', component: NotFoundComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
