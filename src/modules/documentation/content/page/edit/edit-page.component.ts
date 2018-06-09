@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {PageService} from "../../../service/pageService";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Page} from "../../../model/page";
 
 @Component({
@@ -18,7 +18,8 @@ export class EditPageComponent implements OnInit {
 
   constructor(
     private pageService: PageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   onSubmit(): void {
@@ -42,7 +43,7 @@ export class EditPageComponent implements OnInit {
           this.mergedContent = page.sections.map(section => section.content).reduce((a,b) => a + b);
         });
       } else {
-        // TODO: redirect to error page
+        this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });
       }
     });
   }

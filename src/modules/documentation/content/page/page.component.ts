@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {PageService} from "../../service/pageService";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'page',
@@ -14,7 +14,8 @@ export class PageComponent implements OnInit {
 
   constructor(
     private pageService: PageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +24,8 @@ export class PageComponent implements OnInit {
         this.id = page.id;
         this.name = page.name;
         this.sections = page.sections.map(section => section.content);
+      }, err => {
+        this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });
       });
     });
   }

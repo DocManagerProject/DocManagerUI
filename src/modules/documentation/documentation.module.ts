@@ -41,6 +41,9 @@ const documentationRoutes: Routes = [
     BrowserModule,
     FormsModule
   ],
+  exports: [
+    Navbar
+  ],
   providers: [
     AuthGuard,
     SettingsService,
