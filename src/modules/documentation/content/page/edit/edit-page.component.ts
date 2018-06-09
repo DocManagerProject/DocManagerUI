@@ -35,19 +35,6 @@ export class EditPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.page = {
-      id: 0,
-      solution: {
-        id: 0,
-        name: "",
-        createDate: null,
-        state: null
-      },
-      name: "",
-      createDate: null,
-      url: "",
-      sections: []
-    };
     this.route.params.subscribe(params => {
       if (params['url']) {
         this.pageService.getPage(params['url']).subscribe(page => {
