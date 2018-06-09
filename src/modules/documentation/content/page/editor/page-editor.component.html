@@ -1,9 +1,16 @@
 <navbar></navbar>
-<form>
+<form (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col"></div>
     <div class="col">
-      <enhanced-text #pageTitle [(ngModel)]="title" name="pageTitle"> </enhanced-text>
+      <enhanced-text #pageTitle [(ngModel)]="page.name" name="pageTitle"> </enhanced-text>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <enhanced-text #pageTitle [(ngModel)]="page.url" name="pageUrl"> </enhanced-text>
     </div>
     <div class="col"></div>
   </div>
@@ -11,7 +18,7 @@
     <div class="col"></div>
     <div class="col">
       <div class="form-group">
-      <textarea class="form-control" rows="12" id="pageContent" name="content" [(ngModel)]="content">
+      <textarea class="form-control" rows="12" id="pageContent" name="content" [(ngModel)]="mergedContent">
       </textarea>
       </div>
       <button type="submit" class="btn btn-primary">Dodaj stronę</button>
