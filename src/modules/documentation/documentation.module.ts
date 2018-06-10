@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {DocumentationComponent} from "./documentation.component";
 import {Navbar} from "./navbar/navbar";
 import {PageComponent} from "./content/page/page.component";
-import {Category} from "./content/category/category";
+import {CategoryComponent} from "./content/category/category.component";
 import {RouterModule, Routes} from "@angular/router";
 import {Dashboard} from "./content/dashboard/dashboard";
 import {AuthGuard} from "../login/service/authGuard";
@@ -15,10 +15,11 @@ import {FormsModule} from "@angular/forms";
 import {EnhancedTextComponent} from "./content/common/text/enhanced-text.component";
 import {CreatePageComponent} from "./content/page/create/create-page.component";
 import {NotFoundComponent} from "../app/error/not-found.component";
+import {CategoryService} from "./service/category.service";
 
 const documentationRoutes: Routes = [
   { path: 'page/:url', component: PageComponent, canActivate: [AuthGuard]},
-  { path: 'category/:id', component: Category, canActivate: [AuthGuard]},
+  { path: 'category/:url', component: CategoryComponent, canActivate: [AuthGuard]},
   { path: 'dashboard/:id', component: Dashboard, canActivate: [AuthGuard]},
   { path: 'create-page', component: CreatePageComponent, canActivate: [AuthGuard]},
   { path: 'edit-page/:url', component: EditPageComponent, canActivate: [AuthGuard]},
@@ -32,7 +33,7 @@ const documentationRoutes: Routes = [
     PageComponent,
     CreatePageComponent,
     EditPageComponent,
-    Category,
+    CategoryComponent,
     Dashboard,
     EnhancedTextComponent
   ],
@@ -47,7 +48,8 @@ const documentationRoutes: Routes = [
   providers: [
     AuthGuard,
     SettingsService,
-    PageService
+    PageService,
+    CategoryService
   ],
   bootstrap: [DocumentationComponent]
 })
