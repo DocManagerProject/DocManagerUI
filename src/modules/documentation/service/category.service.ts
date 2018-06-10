@@ -32,4 +32,12 @@ export class CategoryService {
         })
       });
   }
+
+  addCategory(category: Category): void {
+    this.http.post<Category>(API_URL + "/categories", category, {
+      headers:  new HttpHeaders({
+        "apiToken": this.storageManager.getApiToken()
+      })
+    }).subscribe();
+  }
 }

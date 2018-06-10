@@ -1,0 +1,24 @@
+<navbar></navbar>
+<form (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <enhanced-text *ngIf="category" [(ngModel)]="category.name" name="categoryName"> </enhanced-text>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <enhanced-text *ngIf="category" [(ngModel)]="category.url" name="categoryUrl"> </enhanced-text>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <button type="submit" class="btn btn-primary">Edytuj kategorię</button>
+    </div>
+    <div class="col"></div>
+  </div>
+</form>

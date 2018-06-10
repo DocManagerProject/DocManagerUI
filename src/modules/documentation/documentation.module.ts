@@ -16,6 +16,8 @@ import {EnhancedTextComponent} from "./content/common/text/enhanced-text.compone
 import {CreatePageComponent} from "./content/page/create/create-page.component";
 import {NotFoundComponent} from "../app/error/not-found.component";
 import {CategoryService} from "./service/category.service";
+import {EditCategoryComponent} from "./content/category/edit/edit-category.component";
+import {CreateCategoryComponent} from "./content/category/create/create-category.component";
 
 const documentationRoutes: Routes = [
   { path: 'page/:url', component: PageComponent, canActivate: [AuthGuard]},
@@ -23,6 +25,8 @@ const documentationRoutes: Routes = [
   { path: 'dashboard/:id', component: Dashboard, canActivate: [AuthGuard]},
   { path: 'create-page', component: CreatePageComponent, canActivate: [AuthGuard]},
   { path: 'edit-page/:url', component: EditPageComponent, canActivate: [AuthGuard]},
+  { path: 'edit-category/:url', component: EditCategoryComponent, canActivate: [AuthGuard]},
+  { path: 'create-category', component: CreateCategoryComponent, canActivate: [AuthGuard]},
   { path: '**', component: NotFoundComponent, canActivate: [AuthGuard]}
 ];
 
@@ -35,7 +39,9 @@ const documentationRoutes: Routes = [
     EditPageComponent,
     CategoryComponent,
     Dashboard,
-    EnhancedTextComponent
+    EnhancedTextComponent,
+    EditCategoryComponent,
+    CreateCategoryComponent
   ],
   imports: [
     RouterModule.forChild(documentationRoutes),
