@@ -41,6 +41,8 @@ export class EditPageComponent implements OnInit {
         this.pageService.getPage(params['url']).subscribe(page => {
           this.page = page;
           this.mergedContent = page.sections.map(section => section.content).reduce((a,b) => a + b);
+        }, err => {
+          this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });
         });
       } else {
         this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });
