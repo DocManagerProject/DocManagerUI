@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {PageService} from "../../service/pageService";
+import {PageService} from "../../../service/page.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

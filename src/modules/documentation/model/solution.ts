@@ -1,4 +1,4 @@
-import {SolutionState} from "./solutionState";
+import {SolutionState} from "./solution-state";
 
 export class Solution {
   public id: number;

@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {PageService} from "../../../service/pageService";
+import {PageService} from "../../../service/page.service";
 import {ActivatedRoute} from "@angular/router";
 import {Page} from "../../../model/page";
-import {StorageManager} from "../../../../app/service/storageManager.service";
+import {StorageManager} from "../../../../app/service/storage-manager.service";
 
 @Component({
   selector: 'create-page',

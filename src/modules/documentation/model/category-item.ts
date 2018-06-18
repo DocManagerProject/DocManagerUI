@@ -1,7 +1,7 @@
-import {CategoryItemType} from "./categoryItemType";
+import {CategoryItemType} from "./category-item-type";
 import {Category} from "./category";
 import {Page} from "./page";
-import {CategoryItemState} from "./categoryItemState";
+import {CategoryItemState} from "./category-item-state";
 
 export class CategoryItem {
   id: number;

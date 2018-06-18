@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {PageService} from "../../../service/pageService";
+import {PageService} from "../../../service/page.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Page} from "../../../model/page";
 
@@ -23,7 +23,7 @@ export class EditPageComponent implements OnInit {
   ) { }
 
   onSubmit(): void {
-    // TODO: implement splitting merged content into sections
+    // TODO: implement splitting merged component into sections
     this.page.sections = [{
       id: 0,
       name: "main",

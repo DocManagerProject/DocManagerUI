@@ -1,5 +1,5 @@
 import {Solution} from "./solution";
-import {PageSection} from "./pageSection";
+import {PageSection} from "./page-section";
 
 export class Page {
   id: number;

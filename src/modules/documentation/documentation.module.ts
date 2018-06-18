@@ -1,44 +1,44 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {DocumentationComponent} from "./documentation.component";
-import {Navbar} from "./navbar/navbar";
-import {PageComponent} from "./content/page/page.component";
-import {CategoryComponent} from "./content/category/category.component";
+import {DocumentationComponent} from "./component/documentation.component";
+import {NavbarComponent} from "./component/navbar/navbar.component";
+import {PageComponent} from "./component/page/show/page.component";
+import {CategoryComponent} from "./component/category/show/category.component";
 import {RouterModule, Routes} from "@angular/router";
-import {Dashboard} from "./content/dashboard/dashboard";
-import {AuthGuard} from "../login/service/authGuard";
-import {SettingsService} from "./service/settingsService";
-import {PageService} from "./service/pageService";
-import {EditPageComponent} from "./content/page/edit/edit-page.component";
+import {DashboardComponent} from "./component/dashboard/show/dashboard.component";
+import {AuthGuardService} from "../login/service/auth-guard.service";
+import {SettingsService} from "./service/settings.service";
+import {PageService} from "./service/page.service";
+import {EditPageComponent} from "./component/page/edit/edit-page.component";
 import {FormsModule} from "@angular/forms";
-import {EnhancedTextComponent} from "./content/common/text/enhanced-text.component";
-import {CreatePageComponent} from "./content/page/create/create-page.component";
-import {NotFoundComponent} from "../app/error/not-found.component";
+import {EnhancedTextComponent} from "./component/common/enchancedtext/enhanced-text.component";
+import {CreatePageComponent} from "./component/page/create/create-page.component";
+import {NotFoundComponent} from "../app/component/error/not-found.component";
 import {CategoryService} from "./service/category.service";
-import {EditCategoryComponent} from "./content/category/edit/edit-category.component";
-import {CreateCategoryComponent} from "./content/category/create/create-category.component";
+import {EditCategoryComponent} from "./component/category/edit/edit-category.component";
+import {CreateCategoryComponent} from "./component/category/create/create-category.component";
 
 const documentationRoutes: Routes = [
-  { path: 'page/:url', component: PageComponent, canActivate: [AuthGuard]},
-  { path: 'category/:url', component: CategoryComponent, canActivate: [AuthGuard]},
-  { path: 'dashboard/:id', component: Dashboard, canActivate: [AuthGuard]},
-  { path: 'create-page', component: CreatePageComponent, canActivate: [AuthGuard]},
-  { path: 'edit-page/:url', component: EditPageComponent, canActivate: [AuthGuard]},
-  { path: 'edit-category/:url', component: EditCategoryComponent, canActivate: [AuthGuard]},
-  { path: 'create-category', component: CreateCategoryComponent, canActivate: [AuthGuard]},
-  { path: '**', component: NotFoundComponent, canActivate: [AuthGuard]}
+  { path: 'page/:url', component: PageComponent, canActivate: [AuthGuardService]},
+  { path: 'category/:url', component: CategoryComponent, canActivate: [AuthGuardService]},
+  { path: 'dashboard/:id', component: DashboardComponent, canActivate: [AuthGuardService]},
+  { path: 'create-page', component: CreatePageComponent, canActivate: [AuthGuardService]},
+  { path: 'edit-page/:url', component: EditPageComponent, canActivate: [AuthGuardService]},
+  { path: 'edit-category/:url', component: EditCategoryComponent, canActivate: [AuthGuardService]},
+  { path: 'create-category', component: CreateCategoryComponent, canActivate: [AuthGuardService]},
+  { path: '**', component: NotFoundComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
   declarations: [
     DocumentationComponent,
-    Navbar,
+    NavbarComponent,
     PageComponent,
     CreatePageComponent,
     EditPageComponent,
     CategoryComponent,
-    Dashboard,
+    DashboardComponent,
     EnhancedTextComponent,
     EditCategoryComponent,
     CreateCategoryComponent
@@ -49,10 +49,10 @@ const documentationRoutes: Routes = [
     FormsModule
   ],
   exports: [
-    Navbar
+    NavbarComponent
   ],
   providers: [
-    AuthGuard,
+    AuthGuardService,
     SettingsService,
     PageService,
     CategoryService

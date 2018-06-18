@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
-import {ApiLoginService} from "./apiLoginService";
+import {ApiLoginService} from "./api-login.service";
 import {CanActivate, Router} from "@angular/router";
-import {SettingsService} from "../../documentation/service/settingsService";
+import {SettingsService} from "../../documentation/service/settings.service";
 
 @Injectable()
-export class LoggedInGuard implements CanActivate {
+export class LoggedInGuardService implements CanActivate {
 
   constructor(
     private apiLoginService: ApiLoginService,

@@ -1,12 +1,12 @@
 import {Component} from "@angular/core";
-import {DashboardItem} from "./dashboardItem";
+import {DashboardItem} from "../../../model/dashboard-item";
 
 @Component({
   selector: 'dashboard',
-  templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.css']
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class Dashboard {
+export class DashboardComponent {
   id: number;
   name: string = 'example dashboard';
   items: DashboardItem[] = [DashboardItem.prepareDashboardItem(), DashboardItem.prepareDashboardItem(), DashboardItem.prepareDashboardItem()];

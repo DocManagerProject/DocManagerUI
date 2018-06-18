@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpResponseBase} from "@angular/common/http";
-import {LoginCredentials} from "../model/loginCredentials";
+import {LoginCredentials} from "../model/login-credentials";
 import {Router} from "@angular/router";
-import {StorageManager} from "../../app/service/storageManager.service";
-import {SettingsService} from "../../documentation/service/settingsService";
+import {StorageManager} from "../../app/service/storage-manager.service";
+import {SettingsService} from "../../documentation/service/settings.service";
 
 const API_URL: string = environment.apiUrl;
 

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {StorageManager} from "../../app/service/storageManager.service";
+import {StorageManager} from "../../app/service/storage-manager.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {environment} from "../../../environments/environment";

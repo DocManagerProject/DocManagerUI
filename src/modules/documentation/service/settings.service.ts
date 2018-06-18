@@ -3,7 +3,7 @@ import {Settings} from "../model/settings";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs/internal/Observable";
-import {StorageManager} from "../../app/service/storageManager.service";
+import {StorageManager} from "../../app/service/storage-manager.service";
 
 const API_URL: string = environment.apiUrl;
 

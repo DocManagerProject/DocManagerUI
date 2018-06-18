@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
-import {CategoryItem} from "../../model/categoryItem";
-import {CategoryService} from "../../service/category.service";
+import {CategoryItem} from "../../../model/category-item";
+import {CategoryService} from "../../../service/category.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CategoryItemType} from "../../model/categoryItemType";
+import {CategoryItemType} from "../../../model/category-item-type";
 
 @Component({
   selector: 'category',

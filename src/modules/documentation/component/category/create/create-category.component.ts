@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {CategoryService} from "../../../service/category.service";
 import {Category} from "../../../model/category";
 import {ActivatedRoute} from "@angular/router";
-import {StorageManager} from "../../../../app/service/storageManager.service";
+import {StorageManager} from "../../../../app/service/storage-manager.service";
 
 @Component({
   selector: 'create-category',

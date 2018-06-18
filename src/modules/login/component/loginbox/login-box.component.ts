@@ -1,13 +1,13 @@
 import {Component} from "@angular/core";
-import {LoginCredentials} from "../../model/loginCredentials";
-import {ApiLoginService} from "../../service/apiLoginService";
+import {LoginCredentials} from "../../model/login-credentials";
+import {ApiLoginService} from "../../service/api-login.service";
 
 @Component({
   selector: 'login-box',
-  templateUrl: './loginBox.html',
-  styleUrls: ['./loginBox.css']
+  templateUrl: './login-box.component.html',
+  styleUrls: ['./login-box.component.css']
 })
-export class LoginBox {
+export class LoginBoxComponent {
   loginCredentials: LoginCredentials = new LoginCredentials("", "");
 
   isValid: boolean = true;
