@@ -39,6 +39,8 @@ export class CreatePageComponent implements OnInit {
 
     this.pageService.addPage(this.page).subscribe(page => {
       this.alertContainer.displaySuccess("Page successfully created.", 4000);
+    }, error => {
+      this.alertContainer.displayError("Error while creating page.", 4000);
     });
   }
 

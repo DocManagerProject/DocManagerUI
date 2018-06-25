@@ -39,6 +39,8 @@ export class EditPageComponent implements OnInit {
 
     this.pageService.editPage(this.page, this.existingPage).subscribe(page => {
       this.alertContainer.displaySuccess("Page successfully edited.", 4000);
+    }, error => {
+      this.alertContainer.displayError("Error while editing page.", 4000);
     });
   }
 

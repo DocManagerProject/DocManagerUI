@@ -66,6 +66,9 @@ const documentationRoutes: Routes = [
     CategoryService
   ],
   bootstrap: [DocumentationComponent],
-  entryComponents: [SuccessAlertComponent]
+  entryComponents: [
+    SuccessAlertComponent,
+    ErrorAlertComponent
+  ]
 })
 export class DocumentationModule { }
