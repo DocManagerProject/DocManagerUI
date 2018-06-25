@@ -13,7 +13,6 @@ import {AlertContainerComponent} from "../../common/alert/container/alert-contai
 export class CreatePageComponent implements OnInit {
 
   page: Page;
-  mergedContent: string;
 
   @ViewChild("pageTitle")
   pageTitleInput: ElementRef;
@@ -29,15 +28,6 @@ export class CreatePageComponent implements OnInit {
   ) { }
 
   onSubmit(): void {
-    // TODO: implement splitting merged content into sections
-    this.page.sections = [{
-      id: 0,
-      name: "main",
-      content: this.mergedContent,
-      index: 0,
-      url: ""
-    }];
-
     this.pageService.addPage(this.page).subscribe(page => {
       this.alertContainer.displaySuccess("Page successfully created.", 4000);
       setTimeout(() => {
@@ -58,9 +48,9 @@ export class CreatePageComponent implements OnInit {
         state: null
       },
       name: "",
+      content: "",
       createDate: null,
-      url: "",
-      sections: []
+      url: ""
     }
   }
 }

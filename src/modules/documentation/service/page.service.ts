@@ -34,9 +34,12 @@ export class PageService {
   editPage(page: Page, existingPage: Page): Observable<Page> {
     let updateObject = {};
 
-    //TODO: updating sections
     if (page.name !== existingPage.name) {
       updateObject["name"] = page.name;
+    }
+
+    if (page.content !== existingPage.content) {
+      updateObject["content"] = page.content;
     }
 
     if (page.url !== existingPage.url) {

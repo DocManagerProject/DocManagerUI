@@ -13,7 +13,6 @@ export class EditPageComponent implements OnInit {
 
   page: Page;
   existingPage: Page;
-  mergedContent: string;
 
   @ViewChild("pageTitle")
   pageTitleInput: ElementRef;
@@ -28,15 +27,6 @@ export class EditPageComponent implements OnInit {
   ) { }
 
   onSubmit(): void {
-    // TODO: implement splitting merged component into sections
-    this.page.sections = [{
-      id: 0,
-      name: "main",
-      content: this.mergedContent,
-      index: 0,
-      url: ""
-    }];
-
     this.pageService.editPage(this.page, this.existingPage).subscribe(page => {
       this.alertContainer.displaySuccess("Page successfully edited.", 4000);
       setTimeout(() => {
@@ -53,7 +43,6 @@ export class EditPageComponent implements OnInit {
         this.pageService.getPage(params['url']).subscribe(page => {
           this.page = page;
           this.existingPage = JSON.parse(JSON.stringify(page));
-          this.mergedContent = page.sections.map(section => section.content).reduce((a,b) => a + b);
         }, err => {
           this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });
         });

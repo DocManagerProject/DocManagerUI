@@ -9,9 +9,7 @@
       <h1>{{ name }}</h1>
     </div>
     <div class="row">
-      <div *ngFor="let section of sections" class="section">
-        <p [innerHtml]="section"> </p>
-      </div>
+      <p [innerHtml]="content"> </p>
     </div>
   </div>
   <div class="col-sm-2"></div>

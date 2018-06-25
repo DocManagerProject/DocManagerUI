@@ -11,7 +11,7 @@ export class PageComponent implements OnInit {
   id: number;
   name: string;
   url: string;
-  sections: string[];
+  content: string;
 
   constructor(
     private pageService: PageService,
@@ -25,7 +25,7 @@ export class PageComponent implements OnInit {
         this.id = page.id;
         this.name = page.name;
         this.url = page.url;
-        this.sections = page.sections.map(section => section.content);
+        this.content = page.content;
       }, err => {
         this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });
       });
