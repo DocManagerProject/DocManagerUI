@@ -21,6 +21,7 @@ import {CreateCategoryComponent} from "./component/category/create/create-catego
 import {SuccessAlertComponent} from "./component/common/alert/success/success-alert.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AlertContainerComponent} from "./component/common/alert/container/alert-container.component";
+import {ErrorAlertComponent} from "./component/common/alert/error/error-alert.component";
 
 const documentationRoutes: Routes = [
   { path: 'page/:url', component: PageComponent, canActivate: [AuthGuardService]},
@@ -46,7 +47,8 @@ const documentationRoutes: Routes = [
     EditCategoryComponent,
     CreateCategoryComponent,
     AlertContainerComponent,
-    SuccessAlertComponent
+    SuccessAlertComponent,
+    ErrorAlertComponent
   ],
   imports: [
     RouterModule.forChild(documentationRoutes),

@@ -1,6 +1,7 @@
 import {Component, ComponentFactoryResolver, ComponentRef, Type, ViewChild, ViewContainerRef} from "@angular/core";
 import {SuccessAlertComponent} from "../success/success-alert.component";
 import {AlertComponent} from "../alert-component";
+import {ErrorAlertComponent} from "../error/error-alert.component";
 
 @Component({
   selector: 'alert-container',
@@ -18,6 +19,10 @@ export class AlertContainerComponent {
 
   displaySuccess(message: string, timeout: number): void {
     this.displayAlert(SuccessAlertComponent, message, timeout);
+  }
+
+  displayError(message: string, timeout: number): void {
+    this.displayAlert(ErrorAlertComponent, message, timeout);
   }
 
   private displayAlert(alertType: Type<any>, message: string, timeout: number): void {
