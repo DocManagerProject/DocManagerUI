@@ -1,0 +1,19 @@
+.successAlert {
+  opacity: 0;
+}
+
+.alertCloseIcon {
+  position: absolute;
+  right: 6px;
+  top: 8px;
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alertMessage {
+  position: relative;
+}

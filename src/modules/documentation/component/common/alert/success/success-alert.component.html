@@ -1,0 +1,8 @@
+<div [@isVisible]="isVisible" class="successAlert alert alert-success" role="alert">
+  <a class="alertCloseIcon" (click)="hide()">
+    <h5>&times;</h5>
+  </a>
+  <div class="alertMessage">
+    {{message}}
+  </div>
+</div>

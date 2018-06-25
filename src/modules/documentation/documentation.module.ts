@@ -18,6 +18,9 @@ import {NotFoundComponent} from "../app/component/error/not-found.component";
 import {CategoryService} from "./service/category.service";
 import {EditCategoryComponent} from "./component/category/edit/edit-category.component";
 import {CreateCategoryComponent} from "./component/category/create/create-category.component";
+import {SuccessAlertComponent} from "./component/common/alert/success/success-alert.component";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AlertContainerComponent} from "./component/common/alert/container/alert-container.component";
 
 const documentationRoutes: Routes = [
   { path: 'page/:url', component: PageComponent, canActivate: [AuthGuardService]},
@@ -41,11 +44,14 @@ const documentationRoutes: Routes = [
     DashboardComponent,
     EnhancedTextComponent,
     EditCategoryComponent,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    AlertContainerComponent,
+    SuccessAlertComponent
   ],
   imports: [
     RouterModule.forChild(documentationRoutes),
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule
   ],
   exports: [
@@ -57,6 +63,7 @@ const documentationRoutes: Routes = [
     PageService,
     CategoryService
   ],
-  bootstrap: [DocumentationComponent]
+  bootstrap: [DocumentationComponent],
+  entryComponents: [SuccessAlertComponent]
 })
 export class DocumentationModule { }
