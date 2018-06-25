@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {PageService} from "../../../service/page.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Page} from "../../../model/page";
 import {StorageManager} from "../../../../app/service/storage-manager.service";
 import {AlertContainerComponent} from "../../common/alert/container/alert-container.component";
@@ -24,7 +24,8 @@ export class CreatePageComponent implements OnInit {
   constructor(
     private pageService: PageService,
     private route: ActivatedRoute,
-    private storageManager: StorageManager
+    private storageManager: StorageManager,
+    private router: Router
   ) { }
 
   onSubmit(): void {
@@ -39,6 +40,9 @@ export class CreatePageComponent implements OnInit {
 
     this.pageService.addPage(this.page).subscribe(page => {
       this.alertContainer.displaySuccess("Page successfully created.", 4000);
+      setTimeout(() => {
+        this.router.navigate(["page/" + this.page.url]);
+      }, 1000);
     }, error => {
       this.alertContainer.displayError("Error while creating page.", 4000);
     });
