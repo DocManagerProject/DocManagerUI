@@ -12,6 +12,7 @@ import {AlertContainerComponent} from "../../common/alert/container/alert-contai
 export class EditPageComponent implements OnInit {
 
   page: Page;
+  existingPage: Page;
   mergedContent: string;
 
   @ViewChild("pageTitle")
@@ -36,7 +37,7 @@ export class EditPageComponent implements OnInit {
       url: ""
     }];
 
-    this.pageService.addPage(this.page);
+    this.pageService.editPage(this.page, this.existingPage);
     this.alertContainer.displaySuccess("Page successfully edited.", 4000);
   }
 
@@ -45,6 +46,7 @@ export class EditPageComponent implements OnInit {
       if (params['url']) {
         this.pageService.getPage(params['url']).subscribe(page => {
           this.page = page;
+          this.existingPage = JSON.parse(JSON.stringify(page));
           this.mergedContent = page.sections.map(section => section.content).reduce((a,b) => a + b);
         }, err => {
           this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });

@@ -30,4 +30,22 @@ export class PageService {
       })
     }).subscribe();
   }
+
+  editPage(page: Page, existingPage: Page): void {
+    let updateObject = {};
+
+    //TODO: updating sections
+    if (page.name !== existingPage.name) {
+      updateObject["name"] = page.name;
+    }
+
+    if (page.url !== existingPage.url) {
+      updateObject["url"] = page.url;
+    }
+    this.http.patch<Page>(API_URL + "/pages/solution/" + existingPage.solution.id + "/url/" + existingPage.url, updateObject, {
+      headers:  new HttpHeaders({
+        "apiToken": this.storageManager.getApiToken()
+      })
+    }).subscribe();
+  }
 }
