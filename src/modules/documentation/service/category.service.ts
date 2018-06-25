@@ -33,11 +33,28 @@ export class CategoryService {
       });
   }
 
-  addCategory(category: Category): void {
-    this.http.post<Category>(API_URL + "/categories", category, {
+  addCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>(API_URL + "/categories", category, {
       headers:  new HttpHeaders({
         "apiToken": this.storageManager.getApiToken()
       })
-    }).subscribe();
+    });
+  }
+
+  editCategory(category: Category, existingCategory: Category): Observable<Category> {
+    let updateObject = {};
+
+    if (category.name !== existingCategory.name) {
+      updateObject["name"] = category.name;
+    }
+
+    if (category.url !== existingCategory.url) {
+      updateObject["url"] = category.url;
+    }
+    return this.http.patch<Category>(API_URL + "/categories/solution/" + existingCategory.solution.id + "/url/" + existingCategory.url, updateObject, {
+      headers:  new HttpHeaders({
+        "apiToken": this.storageManager.getApiToken()
+      })
+    });
   }
 }

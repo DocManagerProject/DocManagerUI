@@ -12,6 +12,7 @@ import {AlertContainerComponent} from "../../common/alert/container/alert-contai
 export class EditCategoryComponent implements OnInit {
 
   category: Category;
+  existingCategory: Category;
 
   @ViewChild("alertContainer")
   alertContainer: AlertContainerComponent;
@@ -23,8 +24,11 @@ export class EditCategoryComponent implements OnInit {
   ) { }
 
   onSubmit(): void {
-    this.categoryService.addCategory(this.category);
-    this.alertContainer.displaySuccess("Category successfully edited.", 4000);
+    this.categoryService.editCategory(this.category, this.existingCategory).subscribe(category => {
+      this.alertContainer.displaySuccess("Category successfully edited.", 4000);
+    }, error => {
+      this.alertContainer.displayError("Error while editing page.", 4000);
+    });
   }
 
   ngOnInit(): void {
@@ -32,6 +36,7 @@ export class EditCategoryComponent implements OnInit {
       if (params['url']) {
         this.categoryService.getCategory(params['url']).subscribe(category => {
           this.category = category;
+          this.existingCategory = JSON.parse(JSON.stringify(category));
         }, err => {
           this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });
         });
