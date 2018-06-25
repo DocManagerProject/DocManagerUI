@@ -22,6 +22,7 @@ import {SuccessAlertComponent} from "./component/common/alert/success/success-al
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AlertContainerComponent} from "./component/common/alert/container/alert-container.component";
 import {ErrorAlertComponent} from "./component/common/alert/error/error-alert.component";
+import {RedirectGuardService} from "./service/redirect-guard.service";
 
 const documentationRoutes: Routes = [
   { path: 'page/:url', component: PageComponent, canActivate: [AuthGuardService]},
@@ -31,6 +32,7 @@ const documentationRoutes: Routes = [
   { path: 'edit-page/:url', component: EditPageComponent, canActivate: [AuthGuardService]},
   { path: 'edit-category/:url', component: EditCategoryComponent, canActivate: [AuthGuardService]},
   { path: 'create-category', component: CreateCategoryComponent, canActivate: [AuthGuardService]},
+  { path: '', component: NotFoundComponent, canActivate: [AuthGuardService, RedirectGuardService]},
   { path: '**', component: NotFoundComponent, canActivate: [AuthGuardService]}
 ];
 
@@ -63,7 +65,8 @@ const documentationRoutes: Routes = [
     AuthGuardService,
     SettingsService,
     PageService,
-    CategoryService
+    CategoryService,
+    RedirectGuardService
   ],
   bootstrap: [DocumentationComponent],
   entryComponents: [
