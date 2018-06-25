@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class PageComponent implements OnInit {
   id: number;
   name: string;
+  url: string;
   sections: string[];
 
   constructor(
@@ -23,6 +24,7 @@ export class PageComponent implements OnInit {
       this.pageService.getPage(params['url']).subscribe(page => {
         this.id = page.id;
         this.name = page.name;
+        this.url = page.url;
         this.sections = page.sections.map(section => section.content);
       }, err => {
         this.router.navigate(['/error'], { skipLocationChange: true, replaceUrl: true });
