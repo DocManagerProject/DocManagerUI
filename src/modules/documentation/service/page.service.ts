@@ -23,15 +23,15 @@ export class PageService {
     });
   }
 
-  addPage(page: Page): void {
-    this.http.post<Page>(API_URL + "/pages", page, {
+  addPage(page: Page): Observable<Page> {
+    return this.http.post<Page>(API_URL + "/pages", page, {
       headers:  new HttpHeaders({
         "apiToken": this.storageManager.getApiToken()
       })
-    }).subscribe();
+    });
   }
 
-  editPage(page: Page, existingPage: Page): void {
+  editPage(page: Page, existingPage: Page): Observable<Page> {
     let updateObject = {};
 
     //TODO: updating sections
@@ -42,10 +42,10 @@ export class PageService {
     if (page.url !== existingPage.url) {
       updateObject["url"] = page.url;
     }
-    this.http.patch<Page>(API_URL + "/pages/solution/" + existingPage.solution.id + "/url/" + existingPage.url, updateObject, {
+    return this.http.patch<Page>(API_URL + "/pages/solution/" + existingPage.solution.id + "/url/" + existingPage.url, updateObject, {
       headers:  new HttpHeaders({
         "apiToken": this.storageManager.getApiToken()
       })
-    }).subscribe();
+    });
   }
 }

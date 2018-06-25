@@ -37,8 +37,9 @@ export class CreatePageComponent implements OnInit {
       url: ""
     }];
 
-    this.pageService.addPage(this.page);
-    this.alertContainer.displaySuccess("Page successfully created.", 4000);
+    this.pageService.addPage(this.page).subscribe(page => {
+      this.alertContainer.displaySuccess("Page successfully created.", 4000);
+    });
   }
 
   ngOnInit(): void {

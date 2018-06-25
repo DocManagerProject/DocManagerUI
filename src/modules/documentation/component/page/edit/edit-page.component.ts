@@ -37,8 +37,9 @@ export class EditPageComponent implements OnInit {
       url: ""
     }];
 
-    this.pageService.editPage(this.page, this.existingPage);
-    this.alertContainer.displaySuccess("Page successfully edited.", 4000);
+    this.pageService.editPage(this.page, this.existingPage).subscribe(page => {
+      this.alertContainer.displaySuccess("Page successfully edited.", 4000);
+    });
   }
 
   ngOnInit(): void {
