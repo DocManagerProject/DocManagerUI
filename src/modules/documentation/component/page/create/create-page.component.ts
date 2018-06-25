@@ -3,6 +3,7 @@ import {PageService} from "../../../service/page.service";
 import {ActivatedRoute} from "@angular/router";
 import {Page} from "../../../model/page";
 import {StorageManager} from "../../../../app/service/storage-manager.service";
+import {AlertContainerComponent} from "../../common/alert/container/alert-container.component";
 
 @Component({
   selector: 'create-page',
@@ -14,8 +15,11 @@ export class CreatePageComponent implements OnInit {
   page: Page;
   mergedContent: string;
 
-  @ViewChild('pageTitle')
+  @ViewChild("pageTitle")
   pageTitleInput: ElementRef;
+
+  @ViewChild("alertContainer")
+  alertContainer: AlertContainerComponent;
 
   constructor(
     private pageService: PageService,
@@ -34,6 +38,7 @@ export class CreatePageComponent implements OnInit {
     }];
 
     this.pageService.addPage(this.page);
+    this.alertContainer.displaySuccess("Page successfully created.", 4000);
   }
 
   ngOnInit(): void {

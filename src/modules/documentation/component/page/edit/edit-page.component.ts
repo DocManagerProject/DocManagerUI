@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {PageService} from "../../../service/page.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Page} from "../../../model/page";
+import {AlertContainerComponent} from "../../common/alert/container/alert-container.component";
 
 @Component({
   selector: 'edit-page',
@@ -13,8 +14,11 @@ export class EditPageComponent implements OnInit {
   page: Page;
   mergedContent: string;
 
-  @ViewChild('pageTitle')
+  @ViewChild("pageTitle")
   pageTitleInput: ElementRef;
+
+  @ViewChild("alertContainer")
+  alertContainer: AlertContainerComponent;
 
   constructor(
     private pageService: PageService,
@@ -33,6 +37,7 @@ export class EditPageComponent implements OnInit {
     }];
 
     this.pageService.addPage(this.page);
+    this.alertContainer.displaySuccess("Page successfully edited.", 4000);
   }
 
   ngOnInit(): void {

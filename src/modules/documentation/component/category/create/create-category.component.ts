@@ -1,8 +1,9 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {CategoryService} from "../../../service/category.service";
 import {Category} from "../../../model/category";
 import {ActivatedRoute} from "@angular/router";
 import {StorageManager} from "../../../../app/service/storage-manager.service";
+import {AlertContainerComponent} from "../../common/alert/container/alert-container.component";
 
 @Component({
   selector: 'create-category',
@@ -13,6 +14,9 @@ export class CreateCategoryComponent implements OnInit {
 
   category: Category;
 
+  @ViewChild("alertContainer")
+  alertContainer: AlertContainerComponent;
+
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
@@ -21,6 +25,7 @@ export class CreateCategoryComponent implements OnInit {
 
   onSubmit(): void {
     this.categoryService.addCategory(this.category);
+    this.alertContainer.displaySuccess("Category successfully created.", 4000);
   }
 
   ngOnInit(): void {

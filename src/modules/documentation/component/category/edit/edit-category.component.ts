@@ -1,7 +1,8 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {Category} from "../../../model/category";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CategoryService} from "../../../service/category.service";
+import {AlertContainerComponent} from "../../common/alert/container/alert-container.component";
 
 @Component({
   selector: 'edit-category',
@@ -12,6 +13,9 @@ export class EditCategoryComponent implements OnInit {
 
   category: Category;
 
+  @ViewChild("alertContainer")
+  alertContainer: AlertContainerComponent;
+
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
@@ -20,6 +24,7 @@ export class EditCategoryComponent implements OnInit {
 
   onSubmit(): void {
     this.categoryService.addCategory(this.category);
+    this.alertContainer.displaySuccess("Category successfully edited.", 4000);
   }
 
   ngOnInit(): void {
